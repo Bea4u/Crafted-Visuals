@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎨 Joy Nance – Creative Portfolio
 
 Welcome to my personal portfolio website!  
@@ -35,3 +36,21 @@ I’m always open to design collaborations, commissions, and creative projects.
 
 > 💡 *This portfolio is constantly evolving — new works and updates are added regularly.*
 
+=======
+## Hi there 👋
+
+<!--
+**Bea4u/Bea4u** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
+>>>>>>> 275915c (Initial commit)
