@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy Baker - Design Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <!-- 🎯 SYMBOL OPPORTUNITY: Add navigation icons -->
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#about"><i class="fas fa-user"></i> About</a>
+        <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
+        <a href="#case-studies"><i class="fas fa-project-diagram"></i> Process</a>
+        <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+        <a href="#services"><i class="fas fa-concierge-bell"></i> Services</a>
+        <a href="#testimonials"><i class="fas fa-star"></i> Reviews</a>
+        <a href="#experience"><i class="fas fa-history"></i> Experience</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <!-- 🖼️ DESIGN OPPORTUNITY: Profile image or avatar -->
+            <div class="profile-pic">
+                <!-- You can replace this with an actual image or keep the placeholder -->
+            </div>
+            
+            <!-- 🎨 HEADING DESIGN: Main title with decorative elements -->
+            <h1>
+                <span class="text-highlight">Joy</span> 
+                <span class="text-accent">Nance</span>
+                <!-- 💫 SYMBOL: Add sparkle or design element -->
+                <i class="fas fa-star accent-star"></i>
+            </h1>
+            
+            <!-- 📝 SUBTITLE with emphasis -->
+            <p class="hero-subtitle">
+                Creative <span class="highlight">Graphic Designer</span> • 
+                Brand <span class="highlight">Identity Specialist</span> • 
+                Visual <span class="highlight">Experience Designer</span>
+            </p>
+            
+            <button class="cta-button" onclick="scrollToSection('portfolio')">
+                <i class="fas fa-eye"></i> View My Work
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <!-- 🎯 HEADING DESIGN: Section title with decorative elements -->
+            <h2 class="section-title">
+                <span class="title-icon"><i class="fas fa-user-circle"></i></span>
+                About Joy
+                <span class="title-decoration"></span>
+            </h2>
+            
+            <div class="about-content">
+                <p class="intro-text">
+                    I am a passionate graphic designer with a unique blend of creative vision and technical expertise. My journey began with a Computer Science/ICT degree, which gave me a deep understanding of technology, and evolved into specialized graphic and experience design training.
+                </p>
+                
+                <!-- 📊 STATS with icons -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="stat-number">9+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-code"></i></div>
+                        <div class="stat-number">Tech + Design</div>
+                        <div class="stat-label">Unique Background</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <!-- 🎨 HEADING: Skills title with creative styling -->
+            <h2 class="section-title">
+                <span class="title-icon"><i class="fas fa-palette"></i></span>
+                Skills & Expertise
+                <span class="title-underline"></span>
+            </h2>
+            
+            <div class="skills-grid">
+                <!-- Skill Card 1 -->
+                <div class="skill-card">
+                    <!-- 🎯 ICON: Large skill icon -->
+                    <div class="skill-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Graphic & Experience Design</h3>
+                    <p>Specializing in comprehensive brand identity systems and visual communication design.</p>
+                    
+                    <!-- 🏷️ TAGS: Skill tags with styling -->
+                    <div class="skill-tags">
+                        <span class="tag"><i class="fas fa-tag"></i> Brand Identity</span>
+                        <span class="tag"><i class="fas fa-tag"></i> Logo Design</span>
+                        <span class="tag"><i class="fas fa-tag"></i> Visual Guidelines</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile & Product Design</h3>
+                    <p>Creating user-centered mobile experiences and product interfaces.</p>
+                    
+                    <div class="skill-tags">
+                        <span class="tag"><i class="fas fa-tag"></i> Mobile UI/UX</span>
+                        <span class="tag"><i class="fas fa-tag"></i> Prototyping</span>
+                        <span class="tag"><i class="fas fa-tag"></i> User Flows</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Print & Packaging Design</h3>
+                    <p>Developing comprehensive print solutions and packaging designs.</p>
+                    
+                    <div class="skill-tags">
+                        <span class="tag"><i class="fas fa-tag"></i> Print Design</span>
+                        <span class="tag"><i class="fas fa-tag"></i> Packaging</span>
+                        <span class="tag"><i class="fas fa-tag"></i> Production Knowledge</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <!-- 💼 HEADING: Portfolio with briefcase icon -->
+            <h2 class="section-title">
+                <span class="title-icon"><i class="fas fa-briefcase"></i></span>
+                Featured Work
+                <span class="title-decoration"></span>
+            </h2>
+            
+            <!-- 🎯 FILTER BUTTONS with icons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterPortfolio('all')">
+                    <i class="fas fa-th"></i> All Projects
+                </button>
+                <button class="filter-btn" onclick="filterPortfolio('graphics')">
+                    <i class="fas fa-paint-brush"></i> Graphics Design
+                </button>
+                <button class="filter-btn" onclick="filterPortfolio('product')">
+                    <i class="fas fa-mobile-alt"></i> Product Design
+                </button>
+                <button class="filter-btn" onclick="filterPortfolio('software')">
+                    <i class="fas fa-code"></i> Software Design
+                </button>
+            </div>
+            
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio items would go here -->
+                <!-- Each item can have decorative elements and icons -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <!-- ✨ HEADING: Contact title with sparkle -->
+                <h2 class="section-title">
+                    <span class="title-icon"><i class="fas fa-envelope-open-text"></i></span>
+                    Let's Create Something Amazing Together
+                    <span class="sparkle-decoration">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </h2>
+                
+                <p class="contact-intro">
+                    Ready to bring your vision to life? I'd love to hear about your project.
+                </p>
+                
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <h3>
+                            <i class="fas fa-paper-plane"></i>
+                            Start Your Project
+                        </h3>
+                        <!-- Contact form would go here -->
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="contact-info-wrapper">
+                        <h3>
+                            <i class="fas fa-address-card"></i>
+                            Get In Touch
+                        </h3>
+                        
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:beatricekirkman64@gmail.com">beatricekirkman64@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Monroe, North Carolina</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-instagram"></i>
+                                <a href="https://instagram.com/crafted._.visuals" target="_blank">@crafted._.visuals</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
