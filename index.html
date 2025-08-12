@@ -3,344 +3,893 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joy Baker - Design Portfolio</title>
+    <title>Joy Nance - Creative Designer Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav a:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-pic {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 6px solid rgba(255,255,255,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .profile-pic::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .text-highlight {
+            color: #fff;
+            display: inline-block;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .text-accent {
+            color: #ffd700;
+            display: inline-block;
+            animation: fadeInRight 1s ease-out 0.3s both;
+        }
+
+        .accent-star {
+            color: #ffd700;
+            margin-left: 1rem;
+            font-size: 3rem;
+            animation: twinkle 2s infinite, spin 4s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-intro {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease-out 1.2s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: all 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255,215,0,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            border-radius: 2px;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        .about {
+            margin: 2rem;
+            color: white;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #ff6b6b, #4ecdc4);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .skill-icon {
+            font-size: 3.5rem;
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-tags {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(255,215,0,0.2);
+            transform: scale(1.05);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-item h3 {
+            color: #ffd700;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .portfolio-item p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .project-links a {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+        }
+
+        .project-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,215,0,0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            margin: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-intro {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-section {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-section h3 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-item i {
+            color: #ffd700;
+            width: 25px;
+            font-size: 1.3rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            
+            .hero-intro {
+                font-size: 1.1rem;
+            }
+            
+            .nav-container {
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .nav a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .profile-pic {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 6rem 1rem 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+            
+            .accent-star {
+                font-size: 2rem;
+                margin-left: 0.5rem;
+            }
+            
+            .nav-container {
+                gap: 0.5rem;
+            }
+            
+            .nav a span {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <!-- 🎯 SYMBOL OPPORTUNITY: Add navigation icons -->
-        <a href="#home"><i class="fas fa-home"></i> Home</a>
-        <a href="#about"><i class="fas fa-user"></i> About</a>
-        <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
-        <a href="#case-studies"><i class="fas fa-project-diagram"></i> Process</a>
-        <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
-        <a href="#services"><i class="fas fa-concierge-bell"></i> Services</a>
-        <a href="#testimonials"><i class="fas fa-star"></i> Reviews</a>
-        <a href="#experience"><i class="fas fa-history"></i> Experience</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="nav-container">
+            <a href="#home"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="#about"><i class="fas fa-user"></i> <span>About</span></a>
+            <a href="#skills"><i class="fas fa-tools"></i> <span>Skills</span></a>
+            <a href="#portfolio"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a>
+            <a href="#contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+        </div>
     </nav>
 
-   <!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <!-- 🖼️ Profile Image -->
-        <div class="profile-pic">
-            <img src="images/profile.jpg" alt="Joy Nance">
-        </div>
-        
-        <!-- 🎨 Main Heading -->
-        <h1>
-            <span class="text-highlight">Joy</span> 
-            <span class="text-accent">Nance</span>
-            <i class="fas fa-star accent-star"></i>
-        </h1>
-
-        <!-- ✨ Tagline -->
-        <h2 class="hero-tagline">Creative Graphic & Web Designer</h2>
-
-        <!-- 📝 Short Intro -->
-        <p class="hero-intro">
-            I craft unique brand identities, eye-catching visuals, and engaging digital experiences.
-        </p>
-
-        <!-- 🔗 Call-to-Action Button -->
-        <a href="#portfolio" class="btn-primary">View My Work</a>
-    </div>
-</section>
-
-            <!-- Portfolio Section -->
-<section id="portfolio" class="portfolio">
-    <h2>My Work</h2>
-    <p class="portfolio-intro">A selection of projects showcasing my skills in design and creativity.</p>
-    
-    <div class="portfolio-grid">
-        <!-- Project-branding -->
-        <div class="portfolio-item">
-            <img src="images/project1.jpg" alt="Brand Identity Design">
-            <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bloom & Brew Complete Brand System - Portfolio 2025</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      color: #fff;
-      overflow-x: hidden;
-    }
-    .slideshow-container {
-      position: relative;
-    }
-  </style>
-</head>
-            <h3>Brand Identity Design</h3>
-            <p>Developed a full branding package for a local business, including logo, color scheme, and typography.</p>
-            <div class="project-links">
-    <a href="project-branding.html" class="btn-primary" target="_blank" rel="noopener noreferrer">
-      Launch Strategy Guide
-   <footer>
-  <p>View the code on <a href="https://github.com/Bea4/Crafted-Visuals" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-</footer>
-
-
-        <!-- project-webdesign -->
-        <div class="portfolio-item">
-            <img src="images/project-webdesign.html" alt="Responsive Web Design">
-            <h3>Responsive Web Design</h3>
-            <p>Designed and built a modern, responsive website for a startup, focusing on UX and performance.</p>
-            <div class="project-links">
-    <a href="project-branding.html" class="btn-primary" target="_blank" rel="noopener noreferrer">
-      Launch Strategy Guide
-   <footer>
-  <p>View the code on <a href="https://github.com/Bea4/Crafted-Visuals" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-</footer>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joy Nance - project-webddesign Showcase</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        
-
-        <!-- project-socialmedia-->
-        <div class="portfolio-item">
-            <img src="images/project-socialmedia.html" alt="Social Media Campaign">
-            <h3>Social Media Campaign</h3>
-            <p>Created engaging social media graphics and content strategy that boosted engagement by 40%.</p>
-            <a href="https://link-to-live-project.com" target="_blank">View Project</a>
-        </div>
-    </div>
-</section>
-            <!-- project-socialmedia-->
-<div class="project-socialmedia showcase">
-  <h5>Social Media Strategy Toolkit</h5>
-  <p>Interactive slideshow with proven social media strategies, content templates, and implementation guide</p>
-  <div class="project-links">
-    <a href="social-media-strategy.html" class="btn-primary" target="_blank" rel="noopener noreferrer">
-      Launch Strategy Guide
-   <footer>
-  <p>View the code on <a href="https://github.com/Bea4/Crafted-Visuals" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-</footer>
-
-            <!-- 🎨 HEADING DESIGN: Main title with decorative elements -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-pic">
+                <img src="profile.jpg" alt="Joy Nance" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b789?w=400&h=400&fit=crop&crop=face'">
+            </div>
+            
             <h1>
                 <span class="text-highlight">Joy</span> 
                 <span class="text-accent">Nance</span>
-                <!-- 💫 SYMBOL: Add sparkle or design element -->
                 <i class="fas fa-star accent-star"></i>
             </h1>
-            
-            <!-- 📝 SUBTITLE with emphasis -->
-            <p class="hero-subtitle">
-                Creative <span class="highlight">Graphic Designer</span> • 
-                Brand <span class="highlight">Identity Specialist</span> • 
-                Visual <span class="highlight">Experience Designer</span>
+
+            <h2 class="hero-tagline">Creative Graphic & Web Designer</h2>
+
+            <p class="hero-intro">
+                I craft unique brand identities, eye-catching visuals, and engaging digital experiences that bring your vision to life.
             </p>
-            
-            <button class="cta-button" onclick="scrollToSection('portfolio')">
+
+            <a href="#portfolio" class="btn-primary">
                 <i class="fas fa-eye"></i> View My Work
-            </button>
+            </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <!-- 🎯 HEADING DESIGN: Section title with decorative elements -->
-            <h2 class="section-title">
-                <span class="title-icon"><i class="fas fa-user-circle"></i></span>
-                About Joy
-                <span class="title-decoration"></span>
-            </h2>
-            
-            <div class="about-content">
-                <p class="intro-text">
-                    I am a passionate graphic designer with a unique blend of creative vision and technical expertise. My journey began with a Computer Science/ICT degree, which gave me a deep understanding of technology, and evolved into specialized graphic and experience design training.
-                </p>
-                
-                <!-- 📊 STATS with icons -->
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
-                        <div class="stat-number">9+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-smile"></i></div>
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Happy Clients</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-code"></i></div>
-                        <div class="stat-number">Tech + Design</div>
-                        <div class="stat-label">Unique Background</div>
-                    </div>
+    <section id="about" class="about section glass">
+        <h2 class="section-title">
+            <i class="fas fa-user-circle"></i> About Joy
+        </h2>
+        
+        <p class="intro-text">
+            I am a passionate graphic designer with a unique blend of creative vision and technical expertise. My journey began with a Computer Science/ICT degree, which gave me a deep understanding of technology, and evolved into specialized graphic and experience design training.
+        </p>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
+                <div class="stat-number">9+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="stat-number">Tech + Design</div>
+                <div class="stat-label">Unique Background</div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <!-- 🎨 HEADING: Skills title with creative styling -->
-            <h2 class="section-title">
-                <span class="title-icon"><i class="fas fa-palette"></i></span>
-                Skills & Expertise
-                <span class="title-underline"></span>
-            </h2>
-            
-            <div class="skills-grid">
-                <!-- Skill Card 1 -->
-                <div class="skill-card">
-                    <!-- 🎯 ICON: Large skill icon -->
-                    <div class="skill-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Graphic & Experience Design</h3>
-                    <p>Specializing in comprehensive brand identity systems and visual communication design.</p>
-                    
-                    <!-- 🏷️ TAGS: Skill tags with styling -->
-                    <div class="skill-tags">
-                        <span class="tag"><i class="fas fa-tag"></i> Brand Identity</span>
-                        <span class="tag"><i class="fas fa-tag"></i> Logo Design</span>
-                        <span class="tag"><i class="fas fa-tag"></i> Visual Guidelines</span>
-                    </div>
+    <section id="skills" class="section">
+        <h2 class="section-title">
+            <i class="fas fa-palette"></i> Skills & Expertise
+        </h2>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-palette"></i>
                 </div>
-
-                <!-- Skill Card 2 -->
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile & Product Design</h3>
-                    <p>Creating user-centered mobile experiences and product interfaces.</p>
-                    
-                    <div class="skill-tags">
-                        <span class="tag"><i class="fas fa-tag"></i> Mobile UI/UX</span>
-                        <span class="tag"><i class="fas fa-tag"></i> Prototyping</span>
-                        <span class="tag"><i class="fas fa-tag"></i> User Flows</span>
-                    </div>
+                <h3>Graphic & Experience Design</h3>
+                <p>Specializing in comprehensive brand identity systems and visual communication design that tells your story.</p>
+                
+                <div class="skill-tags">
+                    <span class="tag">Brand Identity</span>
+                    <span class="tag">Logo Design</span>
+                    <span class="tag">Visual Guidelines</span>
+                    <span class="tag">Typography</span>
                 </div>
+            </div>
 
-                <!-- Skill Card 3 -->
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3>Print & Packaging Design</h3>
-                    <p>Developing comprehensive print solutions and packaging designs.</p>
-                    
-                    <div class="skill-tags">
-                        <span class="tag"><i class="fas fa-tag"></i> Print Design</span>
-                        <span class="tag"><i class="fas fa-tag"></i> Packaging</span>
-                        <span class="tag"><i class="fas fa-tag"></i> Production Knowledge</span>
-                    </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile & Product Design</h3>
+                <p>Creating user-centered mobile experiences and product interfaces that engage and convert.</p>
+                
+                <div class="skill-tags">
+                    <span class="tag">Mobile UI/UX</span>
+                    <span class="tag">Prototyping</span>
+                    <span class="tag">User Flows</span>
+                    <span class="tag">Wireframing</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-print"></i>
+                </div>
+                <h3>Print & Digital Design</h3>
+                <p>Developing comprehensive print solutions and digital assets that maintain consistency across all platforms.</p>
+                
+                <div class="skill-tags">
+                    <span class="tag">Print Design</span>
+                    <span class="tag">Packaging</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Marketing Materials</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <!-- 💼 HEADING: Portfolio with briefcase icon -->
-            <h2 class="section-title">
-                <span class="title-icon"><i class="fas fa-briefcase"></i></span>
-                Featured Work
-                <span class="title-decoration"></span>
-            </h2>
-            
-            <!-- 🎯 FILTER BUTTONS with icons -->
-            <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterPortfolio('all')">
-                    <i class="fas fa-th"></i> All Projects
-                </button>
-                <button class="filter-btn" onclick="filterPortfolio('graphics')">
-                    <i class="fas fa-paint-brush"></i> Graphics Design
-                </button>
-                <button class="filter-btn" onclick="filterPortfolio('product')">
-                    <i class="fas fa-mobile-alt"></i> Product Design
-                </button>
-                <button class="filter-btn" onclick="filterPortfolio('software')">
-                    <i class="fas fa-code"></i> Software Design
-                </button>
-            </div>
-            
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Portfolio items would go here -->
-                <!-- Each item can have decorative elements and icons -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <!-- ✨ HEADING: Contact title with sparkle -->
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fas fa-envelope-open-text"></i></span>
-                    Let's Create Something Amazing Together
-                    <span class="sparkle-decoration">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                </h2>
-                
-                <p class="contact-intro">
-                    Ready to bring your vision to life? I'd love to hear about your project.
-                </p>
-                
-                <div class="contact-grid">
-                    <!-- Contact Form -->
-                    <div class="contact-form-wrapper">
-                        <h3>
-                            <i class="fas fa-paper-plane"></i>
-                            Start Your Project
-                        </h3>
-                        <!-- Contact form would go here -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">
+            <i class="fas fa-briefcase"></i> Featured Work
+        </h2>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop" alt="Brand Identity Design" onerror="this.src='https://via.placeholder.com/500x300/667eea/ffffff?text=Brand+Identity'">
+                <div class="portfolio-content">
+                    <h3>Brand Identity Design</h3>
+                    <p>Developed a comprehensive branding package for a local business, including logo design, color palette, typography system, and brand guidelines that increased brand recognition by 60%.</p>
+                    <div class="project-links">
+                        <a href="project-branding.html" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
                     </div>
-                    
-                    <!-- Contact Information -->
-                    <div class="contact-info-wrapper">
-                        <h3>
-                            <i class="fas fa-address-card"></i>
-                            Get In Touch
-                        </h3>
-                        
-                        <div class="contact-items">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:beatricekirkman64@gmail.com">beatricekirkman64@gmail.com</a>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Monroe, North Carolina</span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-instagram"></i>
-                                <a href="https://instagram.com/crafted._.visuals" target="_blank">@crafted._.visuals</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop" alt="Responsive Web Design" onerror="this.src='https://via.placeholder.com/500x300/764ba2/ffffff?text=Web+Design'">
+                <div class="portfolio-content">
+                    <h3>Responsive Web Design</h3>
+                    <p>Designed and built a modern, responsive website for a tech startup, focusing on user experience, performance optimization, and conversion rate improvement.</p>
+                    <div class="project-links">
+                        <a href="project-webdesign.html" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=500&h=300&fit=crop" alt="Social Media Campaign" onerror="this.src='https://via.placeholder.com/500x300/8b5cf6/ffffff?text=Social+Media'">
+                <div class="portfolio-content">
+                    <h3>Social Media Campaign</h3>
+                    <p>Created an engaging social media visual campaign with custom graphics, templates, and content strategy that boosted client engagement by 150% and follower growth by 40%.</p>
+                    <div class="project-links">
+                        <a href="project-socialmedia.html" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Contact Section -->
+    <section id="contact" class="contact section glass">
+        <h2 class="section-title">
+            <i class="fas fa-envelope-open-text"></i> Let's Create Something Amazing Together
+        </h2>
+        
+        <p class="contact-intro">
+            Ready to bring your vision to life? I'd love to hear about your project and explore how we can work together.
+        </p>
+        
+        <div class="contact-grid">
+            <div class="contact-section">
+                <h3>
+                    <i class="fas fa-address-card"></i> Get In Touch
+                </h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:beatricekirkman64@gmail.com">beatricekirkman64@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Monroe, North Carolina</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <a href="https://instagram.com/crafted._.visuals" target="_blank">@crafted._.visuals</a>
+                </div>
+            </div>
+            
+            <div class="contact-section">
+                <h3>
+                    <i class="fas fa-rocket"></i> Ready to Start?
+                </h3>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">
+                    Whether you need a complete rebrand, a stunning website, or eye-catching marketing materials, I'm here to help bring your ideas to life.
+                </p>
+                <a href="mailto:@jhoybhay@gmail.com subject=Project%20Inquiry&body=Hi%20Joy,%0D%0A%0D%0AI'm%20interested%20in%20working%20with%20you%20on%20a%20project.%20Here%20are%
