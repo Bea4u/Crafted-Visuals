@@ -106,6 +106,10 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
             position: relative;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-pic::after {
@@ -136,6 +140,14 @@
             height: 100%;
             object-fit: cover;
             transition: all 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .profile-pic .profile-initials {
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero h1 {
@@ -276,7 +288,6 @@
             border-radius: 2px;
         }
 
-        /* Glass morphism effect */
         .glass {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(20px);
@@ -285,7 +296,6 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
-        /* About Section */
         .about {
             margin: 2rem;
             color: white;
@@ -351,7 +361,6 @@
             font-size: 1.1rem;
         }
 
-        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -440,7 +449,6 @@
             transform: scale(1.05);
         }
 
-        /* Portfolio Section */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -527,7 +535,6 @@
             box-shadow: 0 8px 20px rgba(255,215,0,0.4);
         }
 
-        /* Contact Section */
         .contact {
             margin: 2rem;
             color: white;
@@ -692,6 +699,10 @@
                 height: 180px;
             }
             
+            .profile-pic .profile-initials {
+                font-size: 3rem;
+            }
+            
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
@@ -757,7 +768,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-pic">
-                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b789?w=400&h=400&fit=crop&crop=face" alt="Joy Nance">
+                <div class="profile-initials">JN</div>
             </div>
             
             <h1>
@@ -881,12 +892,37 @@
         </h2>
         
         <div class="portfolio-grid">
+            <!-- Project 1: Brand System -->
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop" alt="Brand Identity Design">
+                <div class="portfolio-content">
+                    <h3>Bloom & Brew - Complete Brand System</h3>
+                    <p>Developed a comprehensive branding package for a sustainable coffee shop, including logo design, color palette, typography system, packaging design, and brand guidelines that increased brand recognition by 94%.</p>
+                    <button class="project-btn" onclick="openProject('brand-system')">
+                        <i class="fas fa-external-link-alt"></i> View Project
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 2: Social Media -->
             <div class="portfolio-item">
                 <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=500&h=300&fit=crop" alt="Social Media Campaign">
                 <div class="portfolio-content">
                     <h3>Social Media Strategy & Graphics</h3>
                     <p>Created an engaging social media visual campaign with custom graphics, templates, and content strategy that boosted client engagement by 150% and follower growth by 40%.</p>
-                    <button class="project-btn" data-project="social-media">
+                    <button class="project-btn" onclick="openProject('social-media')">
+                        <i class="fas fa-external-link-alt"></i> View Project
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 3: Web Design -->
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop" alt="Responsive Web Design">
+                <div class="portfolio-content">
+                    <h3>Joy Baker Design Portfolio</h3>
+                    <p>Designed and built a modern, responsive portfolio website showcasing comprehensive design capabilities, featuring smooth animations, optimized performance, and strategic user experience that increased client inquiries by 300%.</p>
+                    <button class="project-btn" onclick="openProject('web-design')">
                         <i class="fas fa-external-link-alt"></i> View Project
                     </button>
                 </div>
@@ -941,7 +977,7 @@
 
     <!-- Project Modal -->
     <div id="project-modal" class="project-modal">
-        <button class="modal-close" id="modal-close">
+        <button class="modal-close" onclick="closeProject()">
             <i class="fas fa-times"></i> Close
         </button>
         <div class="project-content">
@@ -950,17 +986,9 @@
     </div>
 
     <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // Get modal elements
-            const modal = document.getElementById('project-modal');
-            const iframe = document.getElementById('project-iframe');
-            const closeBtn = document.getElementById('modal-close');
-            
-            // Project content functions
-            function getBrandSystemContent() {
-                return `<!DOCTYPE html>
+        // Project content data
+        const projectContent = {
+            'brand-system': `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1042,13 +1070,6 @@
         .result-label {
             color: rgba(255,255,255,0.8);
         }
-        .description {
-            max-width: 700px;
-            margin: 30px auto;
-            line-height: 1.7;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
         .challenge-section {
             background: rgba(255,255,255,0.05);
             padding: 30px;
@@ -1129,11 +1150,9 @@
         </div>
     </div>
 </body>
-</html>`;
-            }
+</html>`,
 
-            function getSocialMediaContent() {
-                return `<!DOCTYPE html>
+            'social-media': `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1293,11 +1312,9 @@
         </div>
     </div>
 </body>
-</html>`;
-            }
+</html>`,
 
-            function getWebDesignContent() {
-                return `<!DOCTYPE html>
+            'web-design': `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1326,8 +1343,15 @@
             border-radius: 50%; 
             border: 4px solid rgba(255,255,255,0.3); 
             margin: 0 auto 2rem; 
-            background: url('https://images.unsplash.com/photo-1494790108755-2616b612b789?w=150&h=150&fit=crop') center/cover; 
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         h1 { 
             font-size: clamp(2.5rem, 6vw, 4rem); 
@@ -1410,7 +1434,7 @@
 <body>
     <div class="hero">
         <div class="hero-content">
-            <div class="profile-pic"></div>
+            <div class="profile-pic">JN</div>
             <h1>Joy Nance Portfolio</h1>
             <p class="tagline">Modern • Responsive • Performance-Optimized</p>
             <p style="font-size: 1.1rem; margin: 30px 0; opacity: 0.9;">
@@ -1486,131 +1510,91 @@
         </div>
     </div>
 </body>
-</html>`;
-            }
+</html>`
+        };
 
-            // Open project function
-            function openProject(projectType) {
-                console.log('Opening project:', projectType);
-                
-                let content = '';
-                
-                switch(projectType) {
-                    case 'brand-system':
-                        content = getBrandSystemContent();
-                        break;
-                    case 'social-media':
-                        content = getSocialMediaContent();
-                        break;
-                    case 'web-design':
-                        content = getWebDesignContent();
-                        break;
-                    default:
-                        console.error('Unknown project type:', projectType);
-                        return;
-                }
-                
-                if (content) {
-                    iframe.srcdoc = content;
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            }
-
-            // Close project function
-            function closeProject() {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                iframe.srcdoc = '';
-            }
-
-            // Add event listeners to project buttons
-            const projectBtns = document.querySelectorAll('.project-btn');
-            projectBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const projectType = this.getAttribute('data-project');
-                    console.log('Button clicked for project:', projectType);
-                    openProject(projectType);
-                });
-            });
-
-            // Close modal event listeners
-            closeBtn.addEventListener('click', closeProject);
+        // Open project function
+        function openProject(projectType) {
+            console.log('Opening project:', projectType);
             
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeProject();
-                }
-            });
+            const modal = document.getElementById('project-modal');
+            const iframe = document.getElementById('project-iframe');
+            
+            if (projectContent[projectType]) {
+                iframe.srcdoc = projectContent[projectType];
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.log('Project opened successfully:', projectType);
+            } else {
+                console.error('Project content not found for:', projectType);
+                alert('Project content not available for: ' + projectType);
+            }
+        }
 
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    closeProject();
-                }
-            });
+        // Close project function
+        function closeProject() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.getElementById('project-iframe').srcdoc = '';
+            console.log('Project modal closed');
+        }
 
-            // Smooth scrolling for navigation
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe elements for animation
-            document.querySelectorAll('.stat-item, .skill-card, .portfolio-item').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease';
-                observer.observe(el);
-            });
-
-            console.log('Portfolio initialized successfully!');
+        // Close modal when clicking outside
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProject();
+            }
         });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('project-modal');
+                if (modal.classList.contains('active')) {
+                    closeProject();
+                }
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-item, .skill-card, .portfolio-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        console.log('Portfolio initialized successfully! All projects should work now.');
     </script>
 </body>
-</html>unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop" alt="Brand Identity Design">
-                <div class="portfolio-content">
-                    <h3>Bloom & Brew - Complete Brand System</h3>
-                    <p>Developed a comprehensive branding package for a sustainable coffee shop, including logo design, color palette, typography system, packaging design, and brand guidelines that increased brand recognition by 94%.</p>
-                    <button class="project-btn" data-project="brand-system">
-                        <i class="fas fa-external-link-alt"></i> View Project
-                    </button>
-                </div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop" alt="Responsive Web Design">
-                <div class="portfolio-content">
-                    <h3>Joy Baker Design Portfolio</h3>
-                    <p>Designed and built a modern, responsive portfolio website showcasing comprehensive design capabilities, featuring smooth animations, optimized performance, and strategic user experience that increased client inquiries by 300%.</p>
-                    <button class="project-btn" data-project="web-design">
-                        <i class="fas fa-external-link-alt"></i> View Project
-                    </button>
-                </div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="https://images.
+</html>
